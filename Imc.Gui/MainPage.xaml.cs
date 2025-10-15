@@ -1,4 +1,6 @@
-﻿namespace Imc.Gui
+﻿using Imc.Model;
+
+namespace Imc.Gui
 {
     public partial class MainPage : ContentPage
     {
@@ -12,9 +14,9 @@
         {
             decimal peso = Convert.ToDecimal(PesoEntry.Text);
             decimal estatura = Convert.ToDecimal(EstaturaEntry.Text);
-            decimal imc = IndiceDeMasaCorporal(peso, estatura);
+            decimal imc = IndiceDeMasaCorporalLib.IndiceDeMasaCorporal(peso, estatura);
             ImcLabel.Text = imc.ToString("G6");
-            SituacionNutricionalLabel.Text = DeterminaEstadoNutricional(imc);
+            SituacionNutricionalLabel.Text = IndiceDeMasaCorporalLib.DeterminarEstadoNutricional(imc);
         }
 
         private void OnLimpiarButtonClicked(object sender, EventArgs e)
@@ -30,30 +32,5 @@
             SituacionNutricionalLabel.Text = string.Empty;
         }
 
-        private decimal IndiceDeMasaCorporal(decimal peso, decimal estatura)
-        {
-            return peso / (estatura * estatura);
-        }
-
-        private string DeterminaEstadoNutricional(decimal imc)
-        {
-            if (imc < 18.5m)
-            {
-                return "Peso bajo";
-            }
-            if (imc < 25m)
-            {
-                return "Peso normal";
-            }
-            if (imc < 30m)
-            {
-                return "Sobrepeso";
-            }
-            if (imc < 40)
-            {
-                return "Obesidad";
-            }
-            return "Obesidad extrema";
-        }
     }
 }
