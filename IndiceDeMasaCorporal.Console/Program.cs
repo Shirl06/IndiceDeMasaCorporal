@@ -30,10 +30,8 @@ decimal estatura =
 
 decimal imc = IndiceDeMasaCorporalLib.IndiceDeMasaCorporal(peso, estatura);
 
-Console.WriteLine(
-    $"El índice de masa coporal de la persona es: {imc:G6}");
-Console.WriteLine(
-    $"El estado nutricional de la persona es: {IndiceDeMasaCorporalLib.DeterminarEstadoNutricional(imc)}");
+Console.WriteLine($"El índice de masa coporal de la persona es: {imc:G6}");
+Console.WriteLine($"El estado nutricional de la persona es: {IndiceDeMasaCorporalLib.DeterminarEstadoNutricional(imc)}");
 
 Console.WriteLine();
 
